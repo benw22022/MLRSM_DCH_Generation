@@ -67,6 +67,7 @@ def main():
 
     # Make a new directory to run in and move into it
     new_dir = f"run_{args.MHPPR}"
+    start_dir = os.getcwd()
     if args.batch is True:
         new_dir = f"batch_{args.MHPPR}"
     os.system(f"mkdir {new_dir}")
@@ -74,7 +75,8 @@ def main():
 
     # If running on batch system
     if args.batch:
-        os.system("cp ../htc_generation.submit .")
+        os.chdir("~")
+        os.system(f"cp {start_dir}/htc_generation.submit .")
         write_batch_script(args)
         os.system(f"condor_submit htc_generation.submit -batch-name generate_MHPPR_{args.MHPPR}")
         sys.exit(0)

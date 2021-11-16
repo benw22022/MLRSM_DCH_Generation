@@ -25,8 +25,8 @@ define l+ e+ mu+ ta+
 define l- e- mu- ta-
 generate p p > h++ h--, h++ > l+ l+, h-- > l- l- / rm 
 output {outfile}
-shower=pythia8
 launch
+shower=pythia8
 set MHPPR {MHPPR}
 set WHPPL auto
 set WHPPR auto
