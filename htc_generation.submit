@@ -1,0 +1,13 @@
+universe   = vanilla
+executable = run_generation.sh
+log    = generation_$(ClusterID).log
+output = generation_$(ClusterID)_$(ProcId).out
+error  = generation_$(ClusterID)_$(ProcId).error
+
+Requirements  = (OpSysAndVer == "CentOS7")
++MyProject    = "af-atlas"
++JobFlavour   = "workday"
+RequestCpus   = 10
+notification  = Error
+
+queue
