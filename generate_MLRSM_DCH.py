@@ -49,8 +49,8 @@ def write_batch_script(args):
     """
     current_dir = os.getcwd()
     command = f"#!/bin/bash \n"
-    command += f"cp -r {current_dir}/*.py . \n"
-    command += f"cp -r {current_dir}/MG5_aMC_v3_1_1 . \n"
+    command += f"cp -r ../{current_dir}/*.py . \n"
+    command += f"cp -r ../{current_dir}/MG5_aMC_v3_1_1 . \n"
     command += f"python3 generate_MLRSM_DCH.py {args.MHPPR} | tee {args.MHPPR}.log \n"
     command += f"rsync -av --progress * {current_dir} --exclude MG5_aMC_v3_1_1"
     # command += f"cp -r * {current_dir} \n"
@@ -75,9 +75,10 @@ def main():
 
     # If running on batch system
     if args.batch:
-        os.chdir("~")
-        os.system(f"cp {start_dir}/htc_generation.submit .")
         write_batch_script(args)
+        os.system("cp run_generation.sh ~ ")
+        os.system(f"cp htc_generation.submit .")
+        os.chdir(os.path.expanduser('~'))
         os.system(f"condor_submit htc_generation.submit -batch-name generate_MHPPR_{args.MHPPR}")
         sys.exit(0)
 
