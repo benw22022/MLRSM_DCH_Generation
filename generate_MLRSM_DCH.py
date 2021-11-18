@@ -77,7 +77,7 @@ def main():
     if args.batch:
         write_batch_script(args)
         os.system("cp run_generation.sh ~ ")
-        os.system(f"cp htc_generation.submit .")
+        os.system(f"cp ../htc_generation.submit ~")
         os.chdir(os.path.expanduser('~'))
         os.system(f"condor_submit htc_generation.submit -batch-name generate_MHPPR_{args.MHPPR}")
         sys.exit(0)
