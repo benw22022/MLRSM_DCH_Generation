@@ -50,8 +50,8 @@ def write_batch_script(args):
     current_dir = os.getcwd()
     parent_dir = os.path.dirname(current_dir)
     command = f"#!/bin/bash \n"
-    command += f"cp -r {current_dir}/*.py . \n"
-    command += f"cp -r {current_dir}/MG5_aMC_v3_1_1 . \n"
+    command += f"cp -r {parent_dir}/*.py . \n"
+    command += f"cp -r {parent_dir}/MG5_aMC_v3_1_1 . \n"
     command += f"python3 generate_MLRSM_DCH.py {args.MHPPR} | tee {args.MHPPR}.log \n"
     command += f"rsync -av --progress * {current_dir} --exclude MG5_aMC_v3_1_1 --exclude var --exclude tmp --exclude *.cc"
     # command += f"cp -r * {current_dir} \n"
