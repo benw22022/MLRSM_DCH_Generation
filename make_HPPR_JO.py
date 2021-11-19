@@ -24,7 +24,7 @@ define h-- hl-- hr--
 define l+ e+ mu+ ta+
 define l- e- mu- ta-
 generate p p > h++ h--, h++ > l+ l+, h-- > l- l- / rm 
-output {outfile}
+output ../{outfile}
 launch
 shower=pythia8
 set MHPPR {MHPPR}
